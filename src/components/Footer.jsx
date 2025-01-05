@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Footer({cards, openedcards}) {
+export default function Footer({cards, openedCards}) {
 
   return (
     <Bottom>
-      {openedcards}/{cards.length} CONCLUÍDOS
+      {openedCards}/{cards.length} CONCLUÍDOS
     </Bottom>
   )
 }
@@ -23,6 +23,4 @@ const Bottom = styled.div`
   bottom: 0;
   left: 0;
   background-color: white;
-
-
-`
+`;

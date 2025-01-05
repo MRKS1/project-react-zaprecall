@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Content from './Content'
 import Header from './Header'
 import Footer from './Footer'
@@ -6,18 +6,16 @@ import styled from 'styled-components'
 import CARDS from '../mock'
 
 export default function QuestionsList() {
-    const openedCards = 0;
-
+    const [openedCards, setOpenedCards] = useState(0);
+    
     return (
         <Container>
             <Header />
-            <Content cards={CARDS} />
-            <Footer cards={CARDS} openedcards={openedCards}/>
+            <Content cards={CARDS} openedCards={openedCards} setOpenedCards={setOpenedCards}/>
+            <Footer cards={CARDS} openedCards={openedCards}/>
         </Container>
     )
 }
-
-
 
 const Container = styled.div`
     min-height: 100vh;

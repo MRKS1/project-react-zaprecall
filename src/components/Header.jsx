@@ -5,11 +5,12 @@ import styled from 'styled-components'
 export default function Header() {
     return (
         <Container>
-            <Logo src={logo} alt="" />
+            <Logo src={logo} />
             <p>ZapRecall</p>
         </Container>
     )
 }
+
 
 const Container = styled.div`
     height: 153px;
