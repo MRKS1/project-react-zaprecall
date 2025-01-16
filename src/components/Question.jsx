@@ -13,7 +13,6 @@ export default function Question({ cards, openedCards, setOpenedCards }) {
   const [clickedAnswer, setClickedAnswer] = useState([]);
   const [clickedFinal, setClickedFinal] = useState([]);
   const [finalColor, setFinalColor] = useState([]);
-  const [finalAnswer, setFinalAnswer] = useState([]);
   const [finalIcon, setFinalIcon] = useState([]);
   const colorWrong = "#FF3030";
   const colorMiddle = "#FF922E";
@@ -26,7 +25,9 @@ export default function Question({ cards, openedCards, setOpenedCards }) {
   }
 
   function secondClick(props) {
-    setClickedQuestion([]);
+    const newClickItems = clickedQuestion.filter((newList) => newList !== props);
+
+    setClickedQuestion(newClickItems);
     setClickedAnswer([...clickedAnswer, props]);
 
   }
@@ -34,7 +35,6 @@ export default function Question({ cards, openedCards, setOpenedCards }) {
   function thirdClick(props, color, icon) {
     setFinalColor((finalColor) => ({ ...finalColor, [props]: color }));
     setFinalIcon((finalIcon) => ({ ...finalIcon, [props]: icon }));
-    setFinalAnswer((finalColor) => ({ ...finalColor, [props]: color }));
     setClickedAnswer([]);
     setClickedFinal([...clickedFinal, props]);
     setOpenedCards(openedCards + 1);
@@ -43,7 +43,7 @@ export default function Question({ cards, openedCards, setOpenedCards }) {
 
   return (
     <div className="cardQuestion">
-      {cards.map((c, index) =>
+      {cards.map(c =>
         <div key={c.id}>
           <BoxQuestionLabel display={`${clicked.includes(c.id) ? "none" : "flex"} `}>
             <p>Pergunta {c.id}</p>
@@ -183,5 +183,4 @@ const BoxQuestionFinished = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
-
 `;
