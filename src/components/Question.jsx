@@ -8,6 +8,8 @@ import styled from 'styled-components'
 
 
 export default function Question({ cards, openedCards, setOpenedCards }) {
+  const randonCards = cards[Math.floor(Math.random() * cards.length)];
+  
   const [clicked, setClicked] = useState([]);
   const [clickedQuestion, setClickedQuestion] = useState([]);
   const [clickedAnswer, setClickedAnswer] = useState([]);
